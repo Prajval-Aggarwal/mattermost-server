@@ -142,7 +142,7 @@
                     padding: 10px 24px;
                     border: none;
                     background: none;
-                    color: var(--denim-button-bg);
+                    color: var(--chicmic-button-bg);
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 20px;
@@ -200,7 +200,7 @@
                         border: none;
                         background: none;
                         border-radius: 4px;
-                        color: var(--denim-button-bg);
+                        color: var(--chicmic-button-bg);
                         font-size: 14px;
                         font-weight: 700;
                         line-height: 14px;
@@ -211,11 +211,11 @@
                         }
 
                         &.active {
-                            border: 1px solid var(--denim-button-bg);
+                            border: 1px solid var(--chicmic-button-bg);
                         }
 
                         &.special {
-                            background: var(--denim-button-bg);
+                            background: var(--chicmic-button-bg);
                             color: var(--button-color);
                         }
                     }
@@ -240,7 +240,7 @@
                         text-align: center;
 
                         .summary-section {
-                            background-color: rgba(var(--denim-button-bg-rgb), 0.08);
+                            background-color: rgba(var(--chicmic-button-bg-rgb), 0.08);
                             border-radius: 4px;
                             font-family: 'Metropolis';
 
@@ -265,7 +265,7 @@
 
                                 padding-top: 12px;
                                 padding-bottom: 12px;
-                                color: var(--denim-button-bg);
+                                color: var(--chicmic-button-bg);
                                 font-family: 'Metropolis';
                                 font-size: 14px;
                                 font-style: normal;
@@ -375,7 +375,7 @@
                         .yearly_savings {
                             padding-top: 12px;
                             padding-bottom: 12px;
-                            color: var(--denim-status-online);
+                            color: var(--chicmic-status-online);
                             font-family: 'Open Sans';
                             font-size: 14px;
                             font-style: normal;
@@ -384,7 +384,7 @@
                         }
 
                         .total_price {
-                            color: var(--sys-denim-center-channel-text);
+                            color: var(--sys-chicmic-center-channel-text);
                             font-family: 'Open Sans';
                             font-size: 14px;
                             font-style: normal;
@@ -393,7 +393,7 @@
                         }
 
                         .monthly_price {
-                            color: var(--sys-denim-center-channel-text);
+                            color: var(--sys-chicmic-center-channel-text);
                             font-family: 'Open Sans';
                             font-size: 14px;
                             font-style: normal;
@@ -432,7 +432,7 @@
 
                             .icon-information-outline {
                                 margin: 0;
-                                color: rgba(var(--sys-denim-center-channel-text-rgb), 0.72);
+                                color: rgba(var(--sys-chicmic-center-channel-text-rgb), 0.72);
                             }
                         }
 

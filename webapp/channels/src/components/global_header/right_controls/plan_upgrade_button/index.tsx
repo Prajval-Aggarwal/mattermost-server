@@ -17,7 +17,7 @@ import OverlayTrigger from 'components/overlay_trigger';
 import Tooltip from 'components/tooltip';
 
 const UpgradeButton = styled.button`
-background: var(--denim-button-bg);
+background: var(--chicmic-button-bg);
 border-radius: 4px;
 border: none;
 box-shadow: none;

@@ -3971,7 +3971,7 @@ exports[`components/ProfilePopover should show the start call button when isCall
                           "sidebarTextActiveColor": "#ffffff",
                           "sidebarTextHoverBg": "#28427b",
                           "sidebarUnreadText": "#ffffff",
-                          "type": "Denim",
+                          "type": "Chicmic",
                         }
                       }
                       user={
@@ -4451,7 +4451,7 @@ exports[`components/ProfilePopover should show the start call button when isCall
                           "sidebarTextActiveColor": "#ffffff",
                           "sidebarTextHoverBg": "#28427b",
                           "sidebarUnreadText": "#ffffff",
-                          "type": "Denim",
+                          "type": "Chicmic",
                         }
                       }
                       user={

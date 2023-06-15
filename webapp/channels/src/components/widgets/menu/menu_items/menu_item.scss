@@ -181,7 +181,7 @@
 
                 &__icon-section {
                     margin-top: -2px;
-                    color: var(--denim-button-bg);
+                    color: var(--chicmic-button-bg);
                     font-size: 18px;
                 }
             }
@@ -236,13 +236,13 @@
         }
 
         .icon-information-outline {
-            color: var(--denim-button-bg);
+            color: var(--chicmic-button-bg);
             cursor: pointer;
         }
 
         a {
             // overriding 4 deep selector
-            color: var(--denim-button-bg) !important;
+            color: var(--chicmic-button-bg) !important;
             font-weight: bold;
             text-decoration: none;
 

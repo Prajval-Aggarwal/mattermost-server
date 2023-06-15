@@ -84,8 +84,8 @@ const Preferences = {
 
     CATEGORY_THEME: 'theme',
     THEMES: {
-        denim: {
-            type: 'Denim',
+        chicmic: {
+            type: 'Chicmic',
             sidebarBg: '#ffffff',
             sidebarText: '#000000',
             sidebarUnreadText: '#000000',

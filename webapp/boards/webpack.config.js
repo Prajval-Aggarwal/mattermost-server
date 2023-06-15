@@ -115,6 +115,9 @@ const config = {
                 },
             },
         ],
+        loaders: [
+            {test: /\.js$/, loader: 'babel', query: {compact: false}},
+        ],
     },
     devtool,
     mode,

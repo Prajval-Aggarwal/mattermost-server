@@ -51,7 +51,7 @@ const InstallLink = (props: {pluginId: string; pluginName: string}) => {
         <Link
             to='#'
             onClick={() => dispatch(installPlugin(props.pluginId))}
-            style={{color: 'var(--denim-button-bg)', fontWeight: '600'}}
+            style={{color: 'var(--chicmic-button-bg)', fontWeight: '600'}}
         >
             <FormattedMessage
                 id='marketplace_modal.list.install.plugin'
@@ -77,7 +77,7 @@ const ConfigureLink = (props: {pluginId: string; pluginName: string}) => {
             {' '}
             <Link
                 to={'/admin_console/plugins/plugin_' + props.pluginId}
-                style={{color: 'var(--denim-button-bg)', fontWeight: '600'}}
+                style={{color: 'var(--chicmic-button-bg)', fontWeight: '600'}}
             >
                 <FormattedMessage
                     id='marketplace_modal.list.configure.plugin'

@@ -600,7 +600,7 @@ export function applyTheme(theme: Theme) {
 }
 
 export function resetTheme() {
-    applyTheme(Preferences.THEMES.denim);
+    applyTheme(Preferences.THEMES.chicmic);
 }
 
 function changeCss(className: string, classValue: string) {

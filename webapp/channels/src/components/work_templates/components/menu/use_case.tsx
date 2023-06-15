@@ -14,7 +14,7 @@ const QuickUse = styled.button`
     padding: 4px 10px;
     border: 0px;
 
-    background: var(--denim-button-bg);
+    background: var(--chicmic-button-bg);
     border-radius: 4px;
     font-weight: 600;
 

@@ -14,7 +14,7 @@ const Modal = styled(GenericModal)`
 
     &.work-template-modal--customize, &.work-template-modal--preview {
         .modal-body {
-            background: rgba(var(--denim-button-bg-rgb), 0.04);
+            background: rgba(var(--chicmic-button-bg-rgb), 0.04);
         }
     }
 `;

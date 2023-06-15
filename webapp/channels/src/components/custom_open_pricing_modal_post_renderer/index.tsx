@@ -232,7 +232,7 @@ export default function OpenPricingModalPost(props: {post: Post}) {
                     </button>
                     <button
                         onClick={() => openPricingModal({trackingLocation: 'notify_admin_message_view_upgrade_options'})}
-                        style={{...btnStyle, color: 'var(--button-bg)', background: 'rgba(var(--denim-button-bg-rgb), 0.08)'}}
+                        style={{...btnStyle, color: 'var(--button-bg)', background: 'rgba(var(--chicmic-button-bg-rgb), 0.08)'}}
                     >
                         {formatMessage({id: 'postypes.custom_open_pricing_modal_post_renderer.view_options', defaultMessage: 'View upgrade options'})}
                     </button>
@@ -253,7 +253,7 @@ export default function OpenPricingModalPost(props: {post: Post}) {
                     <button
                         id='view_upgrade_options'
                         onClick={() => openPricingModal({trackingLocation: 'notify_admin_message_view_upgrade_options'})}
-                        style={{...btnStyle, color: 'var(--button-bg)', background: 'rgba(var(--denim-button-bg-rgb), 0.08)'}}
+                        style={{...btnStyle, color: 'var(--button-bg)', background: 'rgba(var(--chicmic-button-bg-rgb), 0.08)'}}
                     >
                         {formatMessage({id: 'postypes.custom_open_pricing_modal_post_renderer.view_options', defaultMessage: 'View upgrade options'})}
                     </button>

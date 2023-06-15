@@ -274,7 +274,7 @@ const StyledPreviewSection = styled(PreviewSection)`
                     align-self: flex-start;
 
                      &_blue {
-                        color: var(--denim-button-bg);
+                        color: var(--chicmic-button-bg);
                     }
                 }
             }

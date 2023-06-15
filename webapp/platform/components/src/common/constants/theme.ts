@@ -1,8 +1,8 @@
 import {Theme, ThemeKey} from '@mattermost/types/theme';
 
 export const THEMES: Record<ThemeKey, Theme> = {
-    denim: {
-        type: 'Denim',
+    chicmic: {
+        type: 'Chicmic',
             sidebarBg: '#1e325c',
             sidebarText: '#ffffff',
             sidebarUnreadText: '#ffffff',

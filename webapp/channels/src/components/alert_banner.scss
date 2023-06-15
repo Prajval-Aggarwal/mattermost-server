@@ -47,7 +47,7 @@
 
         padding: 10px 16px;
         border: none;
-        background: var(--denim-button-bg);
+        background: var(--chicmic-button-bg);
         border-radius: 4px;
         color: white;
         font-size: 12px;
@@ -118,7 +118,7 @@
         background: rgba(var(--online-indicator-rgb), 0.08);
 
         .AlertBanner__icon {
-            color: var(--denim-status-online);
+            color: var(--chicmic-status-online);
         }
     }
 

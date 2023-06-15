@@ -23,7 +23,7 @@
             justify-content: space-between;
             padding: 12px 8px;
             margin: 0 12px;
-            background-color: var(--denim-sidebar-active-border);
+            background-color: var(--chicmic-sidebar-active-border);
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
             color: var(--button-color);
@@ -111,19 +111,19 @@
                     border: none;
                     background: rgba(28, 88, 217, 0.08);
                     border-radius: 4px;
-                    color: var(--denim-button-bg);
+                    color: var(--chicmic-button-bg);
                     font-size: 12px;
                     font-weight: 600;
                     line-height: 10px;
                 }
 
                 .learn-more {
-                    background: rgba(var(--denim-button-bg-rgb), 0.08);
-                    color: var(--denim-button-bg);
+                    background: rgba(var(--chicmic-button-bg-rgb), 0.08);
+                    color: var(--chicmic-button-bg);
                 }
 
                 .continue {
-                    background: var(--denim-button-bg);
+                    background: var(--chicmic-button-bg);
                     color: var(--button-color);
                 }
             }

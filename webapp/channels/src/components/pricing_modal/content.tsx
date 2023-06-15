@@ -364,7 +364,7 @@ function Content(props: ContentProps) {
                                 isStarter ? (
                                     <PlanLabel
                                         text={formatMessage({id: 'pricing_modal.planLabel.currentPlan', defaultMessage: 'CURRENT PLAN'})}
-                                        color='var(--denim-status-online)'
+                                        color='var(--chicmic-status-online)'
                                         bgColor='var(--center-channel-bg)'
                                         firstSvg={<CheckMarkSvg/>}
                                     />) : undefined}
@@ -419,7 +419,7 @@ function Content(props: ContentProps) {
 
                     <Card
                         id='professional'
-                        topColor='var(--denim-button-bg)'
+                        topColor='var(--chicmic-button-bg)'
                         plan='Professional'
                         planSummary={formatMessage({id: 'pricing_modal.planSummary.professional', defaultMessage: 'Scalable solutions {br} for growing teams'}, {
                             br: <br/>,
@@ -440,7 +440,7 @@ function Content(props: ContentProps) {
                         planLabel={isProfessional ? (
                             <PlanLabel
                                 text={professionalPlanLabelText()}
-                                color='var(--denim-status-online)'
+                                color='var(--chicmic-status-online)'
                                 bgColor='var(--center-channel-bg)'
                                 firstSvg={<CheckMarkSvg/>}
                             />) : undefined}
@@ -481,7 +481,7 @@ function Content(props: ContentProps) {
                             isEnterprise ? (
                                 <PlanLabel
                                     text={formatMessage({id: 'pricing_modal.planLabel.currentPlan', defaultMessage: 'CURRENT PLAN'})}
-                                    color='var(--denim-status-online)'
+                                    color='var(--chicmic-status-online)'
                                     bgColor='var(--center-channel-bg)'
                                     firstSvg={<CheckMarkSvg/>}
                                     renderLastDaysOnTrial={true}

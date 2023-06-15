@@ -23,6 +23,13 @@ const LeftControlsContainer = styled.div`
 
 const LeftControls = (): JSX.Element => (
     <LeftControlsContainer>
+        <img
+            src='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/plqrjkl4yd1rj3sgipzr'
+            alt='chicmic'
+            height='100px'
+            width='100px'
+            className='icon'
+        />
         <ProductMenu/>
         {isDesktopApp() && <HistoryButtons/>}
     </LeftControlsContainer>

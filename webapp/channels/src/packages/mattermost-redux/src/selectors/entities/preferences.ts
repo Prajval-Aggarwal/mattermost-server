@@ -110,11 +110,11 @@ const getThemePreference = createSelector(
     },
 );
 
-export type ThemeKey = 'chicmic' | 'sapphire' | 'quartz' | 'indigo' | 'onyx';
+export type ThemeKey = 'chicmic' ;
 
 export type LegacyThemeType = 'Mattermost' | 'Organization' | 'Mattermost Dark' | 'Windows Dark';
 
-export type ThemeType = 'Chicmic' | 'Sapphire' | 'Quartz' | 'Indigo' | 'Onyx';
+export type ThemeType = 'Chicmic';
 
 export type Theme = {
     [key: string]: string | undefined;

@@ -6798,26 +6798,6 @@ const AdminDefinition = {
                                 display_name: 'Chicmic',
                                 display_name_default: 'Chicmic',
                             },
-                            {
-                                value: 'sapphire',
-                                display_name: 'Sapphire',
-                                display_name_default: 'Sapphire',
-                            },
-                            {
-                                value: 'quartz',
-                                display_name: 'Quartz',
-                                display_name_default: 'Quartz',
-                            },
-                            {
-                                value: 'indigo',
-                                display_name: 'Indigo',
-                                display_name_default: 'Indigo',
-                            },
-                            {
-                                value: 'onyx',
-                                display_name: 'Onyx',
-                                display_name_default: 'Onyx',
-                            },
                         ],
                         isHidden: it.any(
                             it.not(it.licensed),

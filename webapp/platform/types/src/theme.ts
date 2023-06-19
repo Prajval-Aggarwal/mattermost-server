@@ -1,4 +1,4 @@
-export type ThemeKey = 'chicmic' | 'sapphire' | 'quartz' | 'indigo' | 'onyx';
+export type ThemeKey = 'chicmic';
 
 export type LegacyThemeType = 'Mattermost' | 'Organization' | 'Mattermost Dark' | 'Windows Dark';
 

@@ -122,14 +122,7 @@ type ThemeTypeMap = Record<ThemeType | LegacyThemeType, ThemeKey>;
 // - supports mapping old themes to new themes
 const themeTypeMap: ThemeTypeMap = {
     Mattermost: 'chicmic',
-    Organization: 'sapphire',
-    'Mattermost Dark': 'indigo',
-    'Windows Dark': 'onyx',
     Chicmic: 'chicmic',
-    Sapphire: 'sapphire',
-    Quartz: 'quartz',
-    Indigo: 'indigo',
-    Onyx: 'onyx',
 };
 
 // setThemeDefaults will set defaults on the theme for any unset properties.

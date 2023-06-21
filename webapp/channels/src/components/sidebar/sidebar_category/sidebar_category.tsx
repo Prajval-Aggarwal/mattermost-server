@@ -2,6 +2,7 @@
 // See LICENSE.txt for license information.
 
 import React, {MouseEvent, KeyboardEvent} from 'react';
+import { withRouter } from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {Draggable, Droppable} from 'react-beautiful-dnd';
 import classNames from 'classnames';
@@ -28,6 +29,7 @@ import AddChannelsCtaButton from '../add_channels_cta_button';
 
 import SidebarCategorySortingMenu from './sidebar_category_sorting_menu';
 import SidebarCategoryMenu from './sidebar_category_menu';
+import { compose } from 'redux';
 
 type Props = {
     category: ChannelCategory;
@@ -45,13 +47,14 @@ type Props = {
         setCategorySorting: (categoryId: string, sorting: CategorySorting) => void;
         savePreferences: (userId: string, preferences: PreferenceType[]) => void;
     };
+    history: Object;
 };
 
 type State = {
     isMenuOpen: boolean;
 }
 
-export default class SidebarCategory extends React.PureComponent<Props, State> {
+class SidebarCategory extends React.PureComponent<Props, State> {
     categoryTitleRef: React.RefObject<HTMLButtonElement>;
     newDropBoxRef: React.RefObject<HTMLDivElement>;
 
@@ -407,6 +410,8 @@ export default class SidebarCategory extends React.PureComponent<Props, State> {
                                     );
                                 }}
                             </Droppable>
+                            <button onClick={()=>{console.log(typeof this.props.history, 'type js');
+                            return this.props.history.push('/golang/threads');}}>redirect</button>
                             {inviteMembersButton}
                             {addChannelsCtaButton}
                         </div>
@@ -416,6 +421,7 @@ export default class SidebarCategory extends React.PureComponent<Props, State> {
         );
     }
 }
+export default withRouter(SidebarCategory);
 
 // Adding references to translations for i18n-extract
 t('sidebar.types.channels');

@@ -55,7 +55,7 @@ const CopyButton = styled(Button)`
     }
 
     &.success {
-        background: var(--denim-status-online);
+        background: var(--chicmic-status-online);
         color: var(--button-color);
     }
 `;

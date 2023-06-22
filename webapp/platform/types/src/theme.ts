@@ -1,8 +1,8 @@
-export type ThemeKey = 'denim' | 'sapphire' | 'quartz' | 'indigo' | 'onyx';
+export type ThemeKey = 'chicmic' | 'sapphire' | 'quartz' | 'indigo' | 'onyx';
 
 export type LegacyThemeType = 'Mattermost' | 'Organization' | 'Mattermost Dark' | 'Windows Dark';
 
-export type ThemeType = 'Denim' | 'Sapphire' | 'Quartz' | 'Indigo' | 'Onyx';
+export type ThemeType = 'Chicmic' | 'Sapphire' | 'Quartz' | 'Indigo' | 'Onyx';
 
 export type Theme = {
     type?: ThemeType | 'custom';

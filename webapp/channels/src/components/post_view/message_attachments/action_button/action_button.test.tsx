@@ -15,7 +15,7 @@ describe('components/post_view/message_attachments/action_button.jsx', () => {
     const baseProps = {
         action: {id: 'action_id_1', name: 'action_name_1', cookie: 'cookie-contents'},
         handleAction: jest.fn(),
-        theme: Preferences.THEMES.denim as unknown as Theme,
+        theme: Preferences.THEMES.chicmic as unknown as Theme,
     };
 
     test('should match default component state with given props', () => {
@@ -49,9 +49,9 @@ describe('components/post_view/message_attachments/action_button.jsx', () => {
 
         const button = screen.getByRole('button');
 
-        expect(button).toHaveStyle(`borderColor: ${changeOpacity(Preferences.THEMES.denim.onlineIndicator, 0.25)}`);
+        expect(button).toHaveStyle(`borderColor: ${changeOpacity(Preferences.THEMES.chicmic.onlineIndicator, 0.25)}`);
         expect(button).toHaveStyle('borderWidth: 2');
-        expect(button).toHaveStyle(`color: ${Preferences.THEMES.denim.onlineIndicator}`);
+        expect(button).toHaveStyle(`color: ${Preferences.THEMES.chicmic.onlineIndicator}`);
     });
 
     test('should have correct styles when provided color from not default theme', () => {
@@ -79,9 +79,9 @@ describe('components/post_view/message_attachments/action_button.jsx', () => {
         render(<ActionButton {...props}/>);
         const button = screen.getByRole('button');
 
-        expect(button).toHaveStyle(`borderColor: ${changeOpacity(Preferences.THEMES.denim.onlineIndicator, 0.25)}`);
+        expect(button).toHaveStyle(`borderColor: ${changeOpacity(Preferences.THEMES.chicmic.onlineIndicator, 0.25)}`);
         expect(button).toHaveStyle('borderWidth: 2');
-        expect(button).toHaveStyle(`color: ${Preferences.THEMES.denim.onlineIndicator}`);
+        expect(button).toHaveStyle(`color: ${Preferences.THEMES.chicmic.onlineIndicator}`);
     });
 
     test('should have correct styles when provided hex color', () => {

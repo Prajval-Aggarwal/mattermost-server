@@ -47,16 +47,16 @@ const Accordion = styled(LibAccordion)`
             }
 
             &.active {
-                border-color: var(--denim-button-bg);
+                border-color: var(--chicmic-button-bg);
 
                 .accordion-card-header {
-                    color: var(--denim-button-bg);
+                    color: var(--chicmic-button-bg);
                     padding-bottom: 4px;
                 }
 
                 ${Chip} {
-                    background: rgba(var(--denim-button-bg-rgb), 0.08);
-                    color: var(--denim-button-bg);
+                    background: rgba(var(--chicmic-button-bg-rgb), 0.08);
+                    color: var(--chicmic-button-bg);
                 }
             }
         }

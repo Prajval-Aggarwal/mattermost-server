@@ -6794,9 +6794,9 @@ const AdminDefinition = {
                         help_text_markdown: true,
                         options: [
                             {
-                                value: 'denim',
-                                display_name: 'Denim',
-                                display_name_default: 'Denim',
+                                value: 'chicmic',
+                                display_name: 'Chicmic',
+                                display_name_default: 'Chicmic',
                             },
                             {
                                 value: 'sapphire',

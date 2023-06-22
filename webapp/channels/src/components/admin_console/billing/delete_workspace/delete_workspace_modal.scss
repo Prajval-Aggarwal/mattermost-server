@@ -17,7 +17,7 @@
     }
 
     &__Title {
-        color: var(--sys-denim-center-channel-text);
+        color: var(--sys-chicmic-center-channel-text);
         font-family: Metropolis;
         font-size: 22px;
         font-weight: 700;
@@ -56,10 +56,10 @@
         }
 
         &-Downgrade {
-            border-color: var(--denim-button-bg);
+            border-color: var(--chicmic-button-bg);
             margin-left: auto;
             background: none;
-            color: var(--denim-button-bg);
+            color: var(--chicmic-button-bg);
             font-weight: 600;
         }
 

@@ -38,14 +38,14 @@ const CategoryButton = styled.button`
     text-align: left;
 
     &:hover {
-        background: rgba(var(--denim-button-bg-rgb), 0.04);
+        background: rgba(var(--chicmic-button-bg-rgb), 0.04);
         cursor: pointer;
     }
 
     &.selected {
-        background: rgba(var(--denim-button-bg-rgb), 0.04);
+        background: rgba(var(--chicmic-button-bg-rgb), 0.04);
         font-weight: 600;
-        color: var(--denim-button-bg);
+        color: var(--chicmic-button-bg);
         cursor: pointer;
     }
 `;

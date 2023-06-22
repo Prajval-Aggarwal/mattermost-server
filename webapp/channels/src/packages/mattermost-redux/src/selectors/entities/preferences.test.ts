@@ -188,7 +188,7 @@ describe('Selectors.Preferences', () => {
                         },
                     },
                 },
-            } as unknown as GlobalState)).toEqual(Preferences.THEMES.denim);
+            } as unknown as GlobalState)).toEqual(Preferences.THEMES.chicmic);
         });
 
         it('custom theme', () => {
@@ -438,7 +438,7 @@ describe('Selectors.Preferences', () => {
                         },
                     },
                 },
-            } as GlobalState).mentionHighlightLink).toEqual(Preferences.THEMES.denim.mentionHighlightLink);
+            } as GlobalState).mentionHighlightLink).toEqual(Preferences.THEMES.chicmic.mentionHighlightLink);
         });
 
         it('system theme with missing colours', () => {
@@ -552,7 +552,7 @@ describe('Selectors.Preferences', () => {
                         },
                     },
                 },
-            } as unknown as GlobalState).codeTheme).toEqual(Preferences.THEMES.denim.codeTheme);
+            } as unknown as GlobalState).codeTheme).toEqual(Preferences.THEMES.chicmic.codeTheme);
         });
     });
 

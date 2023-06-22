@@ -402,8 +402,10 @@ export default class LinkingLandingPage extends PureComponent<Props, State> {
         let header = (
             <div className='get-app__header'>
                 <img
-                    src={MattermostLogoSvg}
+                    src='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/plqrjkl4yd1rj3sgipzr'
                     className='get-app__logo'
+                    height='150px'
+                    width='150px'
                 />
             </div>
         );
@@ -412,7 +414,9 @@ export default class LinkingLandingPage extends PureComponent<Props, State> {
             if (this.props.brandImageUrl && !this.state.brandImageError) {
                 customLogo = (
                     <img
-                        src={this.props.brandImageUrl}
+                        src='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/plqrjkl4yd1rj3sgipzr'
+                        height='150px'
+                        width='150px'
                         onError={this.handleBrandImageError}
                         className='get-app__custom-logo'
                     />
@@ -421,9 +425,9 @@ export default class LinkingLandingPage extends PureComponent<Props, State> {
 
             header = (
                 <div className='get-app__header'>
-                    {customLogo}
+                    {'ERP'}
                     <div className='get-app__custom-site-name'>
-                        <span>{this.props.siteName}</span>
+                        <span>ERP</span>
                     </div>
                 </div>
             );

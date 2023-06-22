@@ -163,6 +163,7 @@ function TeamController(props: Props) {
 
     async function initTeamOrRedirect(team: Team) {
         try {
+            console.log('joining in initTeamOrRedirect', props);
             await props.initializeTeam(team);
             setTeam(team);
         } catch (error) {
@@ -174,13 +175,16 @@ function TeamController(props: Props) {
         setTeam(null);
 
         try {
+            console.log('joining in joinTeamOrRedirect',joinedOnFirstLoad , teamNameParam);
             const {data: joinedTeam} = await props.joinTeam(teamNameParam, joinedOnFirstLoad) as ActionResult<Team, ServerError>; // Fix in MM-46907;
+            console.log(joinedTeam, 'data or joinedteam');
             if (joinedTeam) {
                 setTeam(joinedTeam);
             } else {
                 throw new Error('Unable to join team');
             }
         } catch (error) {
+            console.log('2nd error: ' + error);
             history.push('/error?type=team_not_found');
         }
     }

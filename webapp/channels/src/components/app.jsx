@@ -15,8 +15,43 @@ import CRTPostsChannelResetWatcher from 'components/threading/channel_threads/po
 const LazyRoot = React.lazy(() => import('components/root'));
 
 const Root = makeAsyncComponent('Root', LazyRoot);
-
+import axios from 'axios';
+// history.js
+import history from "../plugins/products";
+// import { createBrowserHistory } from "history";
+// export default createBrowserHistory(); 
 class App extends React.PureComponent {
+    componentDidMount(){
+        console.log(this.props,'app component props');
+        if(window.location.search?.includes('token'))
+        {
+            let redirectSearchUrl = window.location.search;
+            console.log(window.location.search,' componentDidMount');
+            redirectSearchUrl = redirectSearchUrl.replaceAll('%2F', '/');
+            redirectSearchUrl = redirectSearchUrl.replaceAll('%3F', '?');
+            redirectSearchUrl = redirectSearchUrl.replaceAll('%3D', '=')
+            console.log('redirectSearchUrl:', redirectSearchUrl);
+            const queryParam = redirectSearchUrl?.split('=').at(-1);
+            console.log(queryParam, redirectSearchUrl, 'param<><>');
+            const url = `http://192.180.0.123:3000/login?token=${queryParam}`;
+            // queryParam
+            if(queryParam)
+            {
+                axios.get(url,{withCredentials: true})
+                    .then((response) => {
+                        console.log('api call success ',response)
+                        history.push('/chicmic1/channels/town-square');
+                    })
+                    .catch((error) => console.log(error, 'error aya'));
+                    // const obj = parseQueryData(window.location);
+                    // console.log(this.props.hcaistory, ' parseQ');
+    
+                // similar behavior as an HTTP redirect
+                // window.location.replace("localhost:8065/chicmic1/channels/town-square");
+                // this.props.history.push('/chicmic1/channels/town-square');
+            }
+        }
+    }
     render() {
         return (
             <Provider store={store}>

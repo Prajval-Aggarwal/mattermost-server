@@ -197,6 +197,9 @@ export class StatusDropdown extends React.PureComponent<Props, State> {
 
     handleEmitUserLoggedOutEvent = (): void => {
         GlobalActions.emitUserLoggedOutEvent();
+        console.log(window,'window');
+        window.location.href = 'http://www.google.com'; 
+        console.log(window,'currentWindow');
     };
 
     onToggle = (open: boolean): void => {

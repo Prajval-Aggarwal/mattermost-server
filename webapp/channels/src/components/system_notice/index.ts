@@ -50,7 +50,7 @@ function makeMapStateToProps() {
             isSystemAdmin: haveISystemPermission(state, {permission: Permissions.MANAGE_SYSTEM}),
             notices: Notices,
             config,
-            license,
+            license,    
             serverVersion,
             analytics,
         };

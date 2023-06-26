@@ -375,7 +375,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     }, [onCustomizeHeader, search, showMfa, isMobileView, getAlternateLink]);
 
     useEffect(() => {
-        if (currentUser) {
+       if (currentUser) {
             if (redirectTo && redirectTo.match(/^\/([^/]|$)/)) {
                 history.push(redirectTo);
                 return;
@@ -752,6 +752,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                         <h1 className='login-body-message-title'>
                             {formatMessage({id: 'login.title', defaultMessage: 'Log in to your account'})}
                         </h1>
+                        // {formatMessage({id: 'login.title', defaultMessage: 'Log in to your account'})}
                     )}
                     {getMessageSubtitle()}
                     {!enableCustomBrand && (

@@ -178,8 +178,10 @@ export function initialize() {
 }
 
 export function close() {
-    WebSocketClient.close();
-
+    WebSocketClient.close()
+    setTimeout(()=>window.close(),0)
+    console.log('closed<><><');
+   
     WebSocketClient.removeMessageListener(handleEvent);
     WebSocketClient.removeFirstConnectListener(handleFirstConnect);
     WebSocketClient.removeReconnectListener(reconnect);

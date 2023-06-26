@@ -270,13 +270,21 @@ export function emitUserLoggedOutEvent(redirectTo = '/', shouldSignalLogout = tr
         }
 
         stopPeriodicStatusUpdates();
+        setTimeout(()=>{
+            window.close()
+        },0)
         WebsocketActions.close();
 
         clearUserCookie();
-
-        getHistory().push(redirectTo);
+        // alert('This will close the window!!');
+        // window.close();
+        window?.close();
+        
+        // getHistory().push(redirectTo);
     }).catch(() => {
-        getHistory().push(redirectTo);
+        global.window.close()
+        // getHistory().push(redirectTo);
+        // window.close();
     });
 }
 

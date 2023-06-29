@@ -73,6 +73,7 @@ func NewReliableWebSocketClientWithDialer(dialer *websocket.Dialer, url, authTok
 	var header http.Header
 	if withAuthHeader {
 		header = http.Header{
+			"Connection":    []string{"keep-alive,Upgrade"},
 			"Authorization": []string{"Bearer " + authToken},
 		}
 	}

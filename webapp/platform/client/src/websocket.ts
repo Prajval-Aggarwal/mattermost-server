@@ -99,129 +99,145 @@ export default class WebSocketClient {
         // Add connection id, and last_sequence_number to the query param.
         // We cannot use a cookie because it will bleed across tabs.
         // We cannot also send it as part of the auth_challenge, because the session cookie is already sent with the request.
-        this.conn = new WebSocket(`${connectionUrl}?connection_id=${this.connectionId}&sequence_number=${this.serverSequence}`);
+        const headers=new Headers({Connection:'Upgrade'})
+        // this.conn = new WebSocket(`${connectionUrl}?connection_id=${this.connectionId}&sequence_number=${this.serverSequence}`);
+        let socket = new WebSocket(`${connectionUrl}?connection_id=${this.connectionId}&sequence_number=${this.serverSequence}`);
         this.connectionUrl = connectionUrl;
 
-        this.conn.onopen = () => {
-            if (token) {
-                this.sendMessage('authentication_challenge', {token});
-            }
-
-            if (this.connectFailCount > 0) {
-                console.log('websocket re-established connection'); //eslint-disable-line no-console
-
-                this.reconnectCallback?.();
-                this.reconnectListeners.forEach((listener) => listener());
-            } else if (this.firstConnectCallback || this.firstConnectListeners.size > 0) {
-                this.firstConnectCallback?.();
-                this.firstConnectListeners.forEach((listener) => listener());
-            }
-
-            this.connectFailCount = 0;
-        };
-
-        this.conn.onclose = () => {
-            this.conn = null;
-            this.responseSequence = 1;
-
-            if (this.connectFailCount === 0) {
-                console.log('websocket closed'); //eslint-disable-line no-console
-            }
-
-            this.connectFailCount++;
-
-            this.closeCallback?.(this.connectFailCount);
-            this.closeListeners.forEach((listener) => listener(this.connectFailCount));
-
-            let retryTime = MIN_WEBSOCKET_RETRY_TIME;
-
-            // If we've failed a bunch of connections then start backing off
-            if (this.connectFailCount > MAX_WEBSOCKET_FAILS) {
-                retryTime = MIN_WEBSOCKET_RETRY_TIME * this.connectFailCount * this.connectFailCount;
-                if (retryTime > MAX_WEBSOCKET_RETRY_TIME) {
-                    retryTime = MAX_WEBSOCKET_RETRY_TIME;
-                }
-            }
-
-            // Applying jitter to avoid thundering herd problems.
-            retryTime += Math.random() * JITTER_RANGE;
-
-            setTimeout(
-                () => {
-                    this.initialize(connectionUrl, token);
-                },
-                retryTime,
+        socket.addEventListener('open', () => {
+            const headers = {
+              Upgrade: 'websocket',
+              // Add any other headers you need
+            };
+          
+            socket.send(
+              Object.entries(headers)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('\r\n')
             );
-        };
-
-        this.conn.onerror = (evt) => {
-            if (this.connectFailCount <= 1) {
-                console.log('websocket error'); //eslint-disable-line no-console
-                console.log(evt); //eslint-disable-line no-console
-            }
-
-            this.errorCallback?.(evt);
-            this.errorListeners.forEach((listener) => listener(evt));
-        };
-
-        this.conn.onmessage = (evt) => {
-            const msg = JSON.parse(evt.data);
-            if (msg.seq_reply) {
-                // This indicates a reply to a websocket request.
-                // We ignore sequence number validation of message responses
-                // and only focus on the purely server side event stream.
-                if (msg.error) {
-                    console.log(msg); //eslint-disable-line no-console
+          
+            socket.onopen = () => {
+                if (token) {
+                    this.sendMessage('authentication_challenge', {token});
                 }
-
-                if (this.responseCallbacks[msg.seq_reply]) {
-                    this.responseCallbacks[msg.seq_reply](msg);
-                    Reflect.deleteProperty(this.responseCallbacks, msg.seq_reply);
+    
+                if (this.connectFailCount > 0) {
+                    console.log('websocket re-established connection'); //eslint-disable-line no-console
+    
+                    this.reconnectCallback?.();
+                    this.reconnectListeners.forEach((listener) => listener());
+                } else if (this.firstConnectCallback || this.firstConnectListeners.size > 0) {
+                    this.firstConnectCallback?.();
+                    this.firstConnectListeners.forEach((listener) => listener());
                 }
-            } else if (this.eventCallback || this.messageListeners.size > 0) {
-                // We check the hello packet, which is always the first packet in a stream.
-                if (msg.event === WEBSOCKET_HELLO && (this.missedEventCallback || this.missedMessageListeners.size > 0)) {
-                    console.log('got connection id ', msg.data.connection_id); //eslint-disable-line no-console
-                    // If we already have a connectionId present, and server sends a different one,
-                    // that means it's either a long timeout, or server restart, or sequence number is not found.
-                    // Then we do the sync calls, and reset sequence number to 0.
-                    if (this.connectionId !== '' && this.connectionId !== msg.data.connection_id) {
-                        console.log('long timeout, or server restart, or sequence number is not found.'); //eslint-disable-line no-console
-
-                        this.missedEventCallback?.();
-			
-			for (const listener of this.missedMessageListeners) {
-                            try {
-                                listener();
-                            } catch (e) {
-                                console.log(`missed message listener "${listener.name}" failed: ${e}`); // eslint-disable-line no-console
-                            }
-                        }
-                        
-			this.serverSequence = 0;
+    
+                this.connectFailCount = 0;
+            };
+    
+            socket.onclose = () => {
+                this.conn = null;
+                this.responseSequence = 1;
+    
+                if (this.connectFailCount === 0) {
+                    console.log('websocket closed'); //eslint-disable-line no-console
+                }
+    
+                this.connectFailCount++;
+    
+                this.closeCallback?.(this.connectFailCount);
+                this.closeListeners.forEach((listener) => listener(this.connectFailCount));
+    
+                let retryTime = MIN_WEBSOCKET_RETRY_TIME;
+    
+                // If we've failed a bunch of connections then start backing off
+                if (this.connectFailCount > MAX_WEBSOCKET_FAILS) {
+                    retryTime = MIN_WEBSOCKET_RETRY_TIME * this.connectFailCount * this.connectFailCount;
+                    if (retryTime > MAX_WEBSOCKET_RETRY_TIME) {
+                        retryTime = MAX_WEBSOCKET_RETRY_TIME;
                     }
-
-                    // If it's a fresh connection, we have to set the connectionId regardless.
-                    // And if it's an existing connection, setting it again is harmless, and keeps the code simple.
-                    this.connectionId = msg.data.connection_id;
                 }
-
-                // Now we check for sequence number, and if it does not match,
-                // we just disconnect and reconnect.
-                if (msg.seq !== this.serverSequence) {
-                    console.log('missed websocket event, act_seq=' + msg.seq + ' exp_seq=' + this.serverSequence); //eslint-disable-line no-console
-                    // We are not calling this.close() because we need to auto-restart.
-                    this.connectFailCount = 0;
-                    this.responseSequence = 1;
-                    this.conn?.close(); // Will auto-reconnect after MIN_WEBSOCKET_RETRY_TIME.
-                    return;
+    
+                // Applying jitter to avoid thundering herd problems.
+                retryTime += Math.random() * JITTER_RANGE;
+    
+                setTimeout(
+                    () => {
+                        this.initialize(connectionUrl, token);
+                    },
+                    retryTime,
+                );
+            };
+    
+            socket.onerror = (evt) => {
+                if (this.connectFailCount <= 1) {
+                    console.log('websocket error'); //eslint-disable-line no-console
+                    console.log(evt); //eslint-disable-line no-console
                 }
-                this.serverSequence = msg.seq + 1;
+    
+                this.errorCallback?.(evt);
+                this.errorListeners.forEach((listener) => listener(evt));
+            };
+    
+            socket.onmessage = (evt) => {
+                const msg = JSON.parse(evt.data);
+                if (msg.seq_reply) {
+                    // This indicates a reply to a websocket request.
+                    // We ignore sequence number validation of message responses
+                    // and only focus on the purely server side event stream.
+                    if (msg.error) {
+                        console.log(msg); //eslint-disable-line no-console
+                    }
+    
+                    if (this.responseCallbacks[msg.seq_reply]) {
+                        this.responseCallbacks[msg.seq_reply](msg);
+                        Reflect.deleteProperty(this.responseCallbacks, msg.seq_reply);
+                    }
+                } else if (this.eventCallback || this.messageListeners.size > 0) {
+                    // We check the hello packet, which is always the first packet in a stream.
+                    if (msg.event === WEBSOCKET_HELLO && (this.missedEventCallback || this.missedMessageListeners.size > 0)) {
+                        console.log('got connection id ', msg.data.connection_id); //eslint-disable-line no-console
+                        // If we already have a connectionId present, and server sends a different one,
+                        // that means it's either a long timeout, or server restart, or sequence number is not found.
+                        // Then we do the sync calls, and reset sequence number to 0.
+                        if (this.connectionId !== '' && this.connectionId !== msg.data.connection_id) {
+                            console.log('long timeout, or server restart, or sequence number is not found.'); //eslint-disable-line no-console
+    
+                            this.missedEventCallback?.();
+                
+                for (const listener of this.missedMessageListeners) {
+                                try {
+                                    listener();
+                                } catch (e) {
+                                    console.log(`missed message listener "${listener.name}" failed: ${e}`); // eslint-disable-line no-console
+                                }
+                            }
+                            
+                this.serverSequence = 0;
+                        }
+    
+                        // If it's a fresh connection, we have to set the connectionId regardless.
+                        // And if it's an existing connection, setting it again is harmless, and keeps the code simple.
+                        this.connectionId = msg.data.connection_id;
+                    }
+    
+                    // Now we check for sequence number, and if it does not match,
+                    // we just disconnect and reconnect.
+                    if (msg.seq !== this.serverSequence) {
+                        console.log('missed websocket event, act_seq=' + msg.seq + ' exp_seq=' + this.serverSequence); //eslint-disable-line no-console
+                        // We are not calling this.close() because we need to auto-restart.
+                        this.connectFailCount = 0;
+                        this.responseSequence = 1;
+                        this.conn?.close(); // Will auto-reconnect after MIN_WEBSOCKET_RETRY_TIME.
+                        return;
+                    }
+                    this.serverSequence = msg.seq + 1;
+    
+                    this.eventCallback?.(msg);
+                    this.messageListeners.forEach((listener) => listener(msg));
+                }
+            };
+          });
 
-                this.eventCallback?.(msg);
-                this.messageListeners.forEach((listener) => listener(msg));
-            }
-        };
     }
 
     /**

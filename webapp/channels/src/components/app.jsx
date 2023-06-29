@@ -36,7 +36,7 @@ class App extends React.PureComponent {
                 console.log('redirectSearchUrl:', redirectSearchUrl);
                 const queryParam = redirectSearchUrl?.split('=').at(-1);
                 console.log(queryParam, redirectSearchUrl, 'param<><>');
-                const url = `http://192.180.0.123:3000/login?token=${queryParam}`;
+                const url = `http://192.180.0.123:3014/login?token=${queryParam}`;
                 // queryParam
             if(queryParam)
             {
@@ -56,7 +56,7 @@ class App extends React.PureComponent {
                             history.push('/chicmic1/channels/town-square');
                         })
                         .catch((error) => {
-                            window.close()
+                          //  window.close()
                         })
                         // const obj = parseQueryData(window.location);
                         // console.log(this.props.hcaistory, ' parseQ');
@@ -74,7 +74,7 @@ class App extends React.PureComponent {
         if(window.location.pathname.includes('login') || window.location.pathname === '/')
         {
             console.log(window.location.pathname,'pathname ');  
-            window.close();
+            // window.close();
         }
     }
     render() {
@@ -82,7 +82,7 @@ class App extends React.PureComponent {
         {
             console.log("LLLLLLL");
             console.log(window.location.pathname,'pathname ');  
-            global.window.close();
+            // global.window.close();
         }
         return (
             <Provider store={store}>

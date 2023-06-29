@@ -30,7 +30,7 @@ func connectWebSocket(c *Context, w http.ResponseWriter, r *http.Request) {
 		//	CheckOrigin:     c.App.OriginChecker(),
 	}
 
-	r.Header.Set("Connection", "Upgrade")
+	r.Header.Set("Connection", "keep-alive,Upgrade")
 	r.Header.Set("Upgrade", "websocket")
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {

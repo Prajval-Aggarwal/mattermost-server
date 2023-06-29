@@ -134,11 +134,11 @@ func (ws *Server) handleWebSocket(w http.ResponseWriter, r *http.Request) {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
 				mlog.Err(err),
 			}
-			ws.logger.Error("ERROR WebSocket",
-				mlog.Stringer("client", wsSession.conn.RemoteAddr()),
-				mlog.Err(err),
-			)
-			ws.removeListener(wsSession)
+			// ws.logger.Error("ERROR WebSocket",
+			// 	mlog.Stringer("client", wsSession.conn.RemoteAddr()),
+			// 	mlog.Err(err),
+			// )
+			// ws.removeListener(wsSession)
 			break
 		}
 

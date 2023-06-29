@@ -31,6 +31,7 @@ func connectWebSocket(c *Context, w http.ResponseWriter, r *http.Request) {
 	}
 
 	r.Header.Set("Connection", "Upgrade")
+	r.Header.Set("Upgrade", "websocket")
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		//mlog.Debug(err)

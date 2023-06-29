@@ -27,12 +27,14 @@ func connectWebSocket(c *Context, w http.ResponseWriter, r *http.Request) {
 	upgrader := websocket.Upgrader{
 		ReadBufferSize:  model.SocketMaxMessageSizeKb,
 		WriteBufferSize: model.SocketMaxMessageSizeKb,
-		CheckOrigin:     c.App.OriginChecker(),
+		//	CheckOrigin:     c.App.OriginChecker(),
 	}
 
+	r.Header.Set("Connection", "Upgrade")
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		c.Err = model.NewAppError("connect", "api.web_socket.connect.upgrade.app_error", nil, "sdfahgvhfvad"+err.Error(), http.StatusBadRequest)
+		mlog.Debug(err)
+		c.Err = model.NewAppError("connect", "api.web_socket.connect.upgrade.app_error", nil, err.Error(), http.StatusBadRequest)
 		return
 	}
 
